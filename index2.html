@@ -1,55 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="stylesheet" href="style.css" />
-	<title>Document</title>
-</head>
-<body style="height: 150vh; position: relative">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body style="height: 350vh; position: relative">
+    <style>
+      body {
+        height: 3000vh; /* Ajusta la altura según sea necesario */
+        margin: 0;
+        padding: 0;
+      }
 
-<style>
-	#animation {
-		width: 1000px;
-		height: 1000px;
-		background-position: center center;
-		background-size: cover;
-		background-repeat: no-repeat;
-		position: fixed;
-	}
-</style>
+      #animation {
+        width: 100%;
+        height: 100%;
+        background-position: center center;
+        background-size: 50%;
+        background-repeat: no-repeat;
+        position: fixed;
+        top: 0;
+        left: 0;
+      }
+    </style>
 
-<div id="animation">
+    <div id="animation"></div>
 
-</div>
-
-<script>
-	ilustraciones = [
+    <script>
+      ilustraciones = [
         "Asset 1.svg",
         "Asset 2.svg",
         "Asset 3.svg",
         "Asset 4.svg",
         "Asset 5.svg",
         "Asset 6.svg",
-	]
-	animation_div = document.getElementById("animation");
+        "Asset 7.svg",
+        "Asset 8.svg",
+        "Asset 9.svg",
+        "Asset 10.svg",
+        "Asset 11.svg",
+        "Asset 12.svg",
+        "Asset 13.svg",
+        "Asset 14.svg",
+        "Asset 15.svg",
+        "Asset 16.svg",
+        "Asset 17.svg",
+        "Asset 18.svg",
+        "Asset 19.svg",
+        "Asset 20.svg",
+        "Asset 21.svg",
+      ];
+      const animationDiv = document.getElementById("animation");
 
-	animation_div.style.backgroundImage = "url('assets/" + ilustraciones[0] + "')";
+      function updateBackgroundImage() {
+        const scrollY = window.scrollY;
+        const windowHeight = window.innerHeight;
 
-    window.onscroll = function() {myFunction()};
+        // Calcula el índice de la imagen a mostrar
+        const imageIndex = Math.floor(
+          scrollY / (windowHeight / ilustraciones.length)
+        );
 
-    function myFunction() {
-        console.log(document.documentElement.scrollTop );
-        if ((document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) && (document.body.scrollTop < 100 || document.documentElement.scrollTop < 100)) {
-            document.getElementById("animation").style.backgroundImage = "url('assets/" + ilustraciones[2] + "')"
-        } else if ((document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) && (document.body.scrollTop < 150 || document.documentElement.scrollTop < 150)) {
-            document.getElementById("animation").style.backgroundImage = "url('assets/" + ilustraciones[4] + "')"
-        }
-        else {
-            document.getElementById("animation").style.backgroundImage = "url('assets/" + ilustraciones[0] + "')"
-		}
-    }
-</script>
+        // Asegúrate de que el índice no sea menor que 0 ni mayor que el número de imágenes
+        const clampedIndex = Math.max(
+          0,
+          Math.min(imageIndex, ilustraciones.length - 1)
+        );
 
-</body>
+        // Actualiza el fondo según el índice de la ilustración
+        animationDiv.style.backgroundImage = `url('assets/${ilustraciones[clampedIndex]}')`;
+      }
+
+      window.addEventListener("scroll", updateBackgroundImage);
+
+      // Llama a updateBackgroundImage() para establecer la imagen inicial
+      updateBackgroundImage();
+    </script>
+  </body>
 </html>
