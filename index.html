@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="animation-container">
+      <img src="./assets/Asset 1.svg" alt="Image 1" />
+      <img src="./assets/Asset 2.svg" alt="Image 2" />
+      <img src="./assets/Asset 3.svg" alt="Image 3" />
+      <img src="./assets/Asset 4.svg" alt="Image 4" />
+      <img src="./assets/Asset 5.svg" alt="Image 5" />
+      <img src="./assets/Asset 6.svg" alt="Image 6" />
+      <img src="./assets/Asset 7.svg" alt="Image 7" />
+      <img src="./assets/Asset 8.svg" alt="Image 8" />
+      <img src="./assets/Asset 9.svg" alt="Image 9" />
+      <img src="./assets/Asset 10.svg" alt="Image 10" />
+      <img src="./assets/Asset 11.svg" alt="Image 11" />
+      <img src="./assets/Asset 12.svg" alt="Image 12" />
+      <img src="./assets/Asset 13.svg" alt="Image 13" />
+      <img src="./assets/Asset 14.svg" alt="Image 14" />
+      <img src="./assets/Asset 15.svg" alt="Image 15" />
+      <img src="./assets/Asset 16.svg" alt="Image 16" />
+      <img src="./assets/Asset 17.svg" alt="Image 17" />
+      <img src="./assets/Asset 18.svg" alt="Image 18" />
+    </div>
+
+    <script>
+      const container = document.getElementById("animation-container");
+      const images = container.querySelectorAll("img");
+      const windowHeight = window.innerHeight;
+      let currentImageIndex = 0;
+
+      function handleScroll() {
+        const scrollY = window.scrollY;
+
+        images.forEach((img) => {
+          const imgTop = img.getBoundingClientRect().top;
+          const imgBottom = img.getBoundingClientRect().bottom;
+
+          // Calcula la opacidad de la imagen en función de su posición en la ventana
+          if (imgTop < windowHeight / 2 && imgBottom > 0) {
+            // Calcula la duración de la transición
+            const distanceToCenter = Math.abs(imgTop - windowHeight / 2);
+            const transitionDuration = Math.min(distanceToCenter / 1000, 1.5);
+
+            // Oculta todas las imágenes
+            images.forEach((i) => {
+              i.style.opacity = 0;
+              i.style.transition = `opacity ${transitionDuration}s ease-in-out`;
+            });
+
+            // Muestra la imagen actual con una transición de duración ajustada
+            img.style.opacity = 1;
+            currentImageIndex = index;
+          }
+        });
+      }
+
+      // Listener para el evento de scroll
+      window.addEventListener("scroll", handleScroll);
+
+      // Llama a handleScroll() para que la imagen inicial sea visible
+      handleScroll();
+    </script>
+  </body>
+</html>

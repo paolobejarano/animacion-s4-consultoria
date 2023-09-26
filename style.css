@@ -1,0 +1,16 @@
+#animation-container {
+  min-height: 1950vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1px;
+}
+
+#animation-container img {
+  width: 100%;
+  opacity: 0;
+  margin-top: 20px;
+  transition: opacity 0.3s ease-in-out;
+}
