@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="style.css" />
+	<title>Document</title>
+</head>
+<body style="height: 150vh; position: relative">
+
+<style>
+	#animation {
+		width: 1000px;
+		height: 1000px;
+		background-position: center center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		position: fixed;
+	}
+</style>
+
+<div id="animation">
+
+</div>
+
+<script>
+	ilustraciones = [
+        "Asset 1.svg",
+        "Asset 2.svg",
+        "Asset 3.svg",
+        "Asset 4.svg",
+        "Asset 5.svg",
+        "Asset 6.svg",
+	]
+	animation_div = document.getElementById("animation");
+
+	animation_div.style.backgroundImage = "url('assets/" + ilustraciones[0] + "')";
+
+    window.onscroll = function() {myFunction()};
+
+    function myFunction() {
+        console.log(document.documentElement.scrollTop );
+        if ((document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) && (document.body.scrollTop < 100 || document.documentElement.scrollTop < 100)) {
+            document.getElementById("animation").style.backgroundImage = "url('assets/" + ilustraciones[2] + "')"
+        } else if ((document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) && (document.body.scrollTop < 150 || document.documentElement.scrollTop < 150)) {
+            document.getElementById("animation").style.backgroundImage = "url('assets/" + ilustraciones[4] + "')"
+        }
+        else {
+            document.getElementById("animation").style.backgroundImage = "url('assets/" + ilustraciones[0] + "')"
+		}
+    }
+</script>
+
+</body>
+</html>
